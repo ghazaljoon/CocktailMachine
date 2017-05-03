@@ -1,0 +1,34 @@
+#include <Pin.h>
+
+
+class Aio: public Pin{
+protected:
+mraa_aio_context maio_;
+public:
+Aio();
+~Aio();
+}
+
+class Sensoraio: public Aio{
+protected:
+public:
+
+virtual bool read(void)=0;
+
+}
+
+class Actioaio: public Aio{
+protected:
+public:
+
+virtual bool write(void)=0;
+}
+
+class thermo: public Sensoraio{
+protected:
+int temp_;
+
+public:
+virtual bool read(void);
+int const getTemp(void);
+}
